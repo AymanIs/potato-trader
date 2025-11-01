@@ -11,7 +11,7 @@ API de trading de pommes de terre développée avec Ruby on Rails.
 ## 🚀 Installation et lancement
 ```bash
 # Cloner le projet
-git clone https://github.com/VOTRE_USERNAME/potato-trader.git
+git clone https://github.com/AymanIs/potato-trader.git
 cd potato_trader
 
 # Installer les dépendances
