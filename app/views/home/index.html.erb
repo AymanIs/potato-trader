@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potato Trading API - Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #42eff5;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header .emoji {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      color:black;
+      font-weight:bold;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .card h2 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+
+    .api-section {
+      margin-bottom: 2rem;
+    }
+
+    .api-section h3 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .endpoint {
+      background: #f7f9fc;
+      border-left: 4px solid #667eea;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    .endpoint code {
+      background: #e3e8ef;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #d63384;
+      font-size: 0.9rem;
+    }
+
+    .test-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #667eea;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary {
+      background: #764ba2;
+    }
+
+    .btn-secondary:hover {
+      background: #663a8f;
+    }
+
+    .info-box {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .info-box strong {
+      color: #856404;
+    }
+
+    .dates-available {
+      background: #d1ecf1;
+      border: 1px solid #0dcaf0;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .dates-available h4 {
+      color: #055160;
+      margin-bottom: 0.5rem;
+    }
+
+    .date-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .date-badge {
+      background: #0dcaf0;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .constraints {
+      background: #f8d7da;
+      border: 1px solid #dc3545;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .constraints h4 {
+      color: #842029;
+      margin-bottom: 0.5rem;
+    }
+
+    .constraints ul {
+      margin-left: 1.5rem;
+      color: #842029;
+    }
+
+    .footer {
+      text-align: center;
+      color: white;
+      margin-top: 3rem;
+      opacity: 0.8;
+      color:black;
+      font-weight:bold;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .test-links {
+        flex-direction: column;
+      }
+      
+      .btn {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="emoji">🥔</span>
+      <h1>Potato Trading API</h1>
+      <p>API de Trading de Pommes de Terre - Documentation Interactive</p>
+    </div>
+
+    <div class="card">
+      <h2>📊 APIs Disponibles</h2>
+      
+      <div class="api-section">
+        <h3>1. API des Cours (Prices)</h3>
+        <div class="endpoint">
+          <p><strong>Endpoint:</strong> <code>GET /prices?date=YYYY-MM-DD</code></p>
+          <p><strong>Accès direct à l’API — par exemple pour la date du 15 novembre 2025 :</strong> 
+            <code>http://localhost:3000/prices?date=2025-11-15</code></p>
+          <p><strong>Description:</strong> Retourne tous les prix de la journée sélectionnée</p>
+          <p><strong>Format de réponse:</strong> JSON Array</p>
+          
+          <div class="test-links">
+            <a href="/prices?date=2025-11-15" class="btn" target="_blank">
+              📈 Tester avec 2025-11-15
+            </a>
+            <a href="/prices?date=2025-11-16" class="btn" target="_blank">
+              📈 Tester avec 2025-11-16
+            </a>
+            <a href="/prices?date=2025-11-17" class="btn" target="_blank">
+              📈 Tester avec 2025-11-17
+            </a>
+          </div>
+
+          <div class="info-box">
+            <strong>💡 Exemple de réponse:</strong><br>
+            <code>[{"time":"2025-11-15T09:00:00.000Z","value":"98.50"}, ...]</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h3>2. API du Meilleur Gain (Best Daily Potential Gain)</h3>
+        <div class="endpoint">
+          <p><strong>Endpoint:</strong> <code>GET /best_gain?date=YYYY-MM-DD</code></p>
+          <p><strong>Accès direct à l’API — par exemple pour la date du 15 novembre 2025 :</strong> 
+          <code>http://localhost:3000/best_gain?date=2025-11-15</code></p>
+          <p><strong>Description:</strong> Calcule le gain maximum possible pour la journée</p>
+          <p><strong>Format de réponse:</strong> JSON Object</p>
+          
+          <div class="test-links">
+            <a href="/best_gain?date=2025-11-15" class="btn btn-secondary" target="_blank">
+              💰 Tester avec 2025-11-15
+            </a>
+            <a href="/best_gain?date=2025-11-16" class="btn btn-secondary" target="_blank">
+              💰 Tester avec 2025-11-16
+            </a>
+            <a href="/best_gain?date=2025-11-17" class="btn btn-secondary" target="_blank">
+              💰 Tester avec 2025-11-17
+            </a>
+          </div>
+
+          <div class="info-box">
+            <strong>💡 Exemple de réponse:</strong><br>
+            <code>{"date":"2025-11-15","max_gain":"545.00","currency":"EUR","max_tons":100}</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="dates-available">
+        <h4>📅 Dates disponibles dans la base de données:</h4>
+        <div class="date-list">
+          <span class="date-badge">2025-11-15 (Journée avec bon gain)</span>
+          <span class="date-badge">2025-11-16 (Journée volatile)</span>
+          <span class="date-badge">2025-11-17 (Journée stable)</span>
+        </div>
+      </div>
+
+      <div class="constraints">
+        <h4>⚠️ Contraintes de Trading:</h4>
+        <ul>
+          <li>Maximum <strong>100 tonnes</strong> de pommes de terre par jour</li>
+          <li><strong>Pas de vente à découvert</strong> (il faut acheter avant de vendre)</li>
+          <li><strong>Day-trading uniquement</strong> (achat et vente le même jour)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔧 Informations Techniques</h2>
+      <p><strong>Framework:</strong> Ruby on Rails <%= Rails.version %></p>
+      <p><strong>Base de données:</strong> SQLite3</p>
+      <p><strong>Nombre de prix en base:</strong> <%= PotatoPrice.count %> enregistrements</p>
+    </div>
+
+    <div class="footer">
+      <p>🥔 Potato Trader API - Développé par ELKOUCH AYMAN </p>
+    </div>
+  </div>
+</body>
+</html>

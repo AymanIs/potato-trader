@@ -1,0 +1,24 @@
+# Ignorer les fichiers de base de données SQLite
+*.sqlite3
+*.sqlite3-*
+
+# Ignorer les logs
+log/*
+tmp/*
+
+# Ignorer les fichiers système
+.DS_Store
+*.swp
+*.swo
+
+# Ignorer les credentials
+config/master.key
+config/credentials/*.key
+
+# Ignorer node_modules si vous utilisez JS
+node_modules/
+
+# Ignorer les fichiers de cache
+.byebug_history
+.idea/
+.vscode/
