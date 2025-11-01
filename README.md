@@ -38,9 +38,9 @@ Une interface web a été ajoutée pour une meilleure expérience utilisateur et
 
 ## 📅 Dates de test disponibles
 
-- 2024-11-15
-- 2024-11-16
-- 2024-11-17
+- 2025-11-15
+- 2025-11-16
+- 2025-11-17
 
 ## 📝 Note
 
